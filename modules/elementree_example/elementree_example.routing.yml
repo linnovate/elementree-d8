@@ -1,0 +1,8 @@
+elementree_example.page:
+  path: '/admin/config/elementree_example_page'
+  defaults:
+    _controller: '\Drupal\elementree_example\Controller\ElementreeExampleController::myPage'
+    _title: 'Elementree Example Page'
+  requirements:
+    _permission: 'access content'
+

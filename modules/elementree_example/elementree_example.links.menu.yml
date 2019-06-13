@@ -1,0 +1,5 @@
+elementree_example.page:
+  title: 'Elementree Example' 
+  descrption: 'Configure the Elementree example.'
+  parent: system.admin_config
+  route_name: elementree_example.page

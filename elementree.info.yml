@@ -1,0 +1,6 @@
+name: 'Elementree'
+description: 'Elementree is client render switcher.'
+package: Block
+
+type: module
+core: 8.x

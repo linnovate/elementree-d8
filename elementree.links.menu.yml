@@ -1,0 +1,5 @@
+elementree.settings:
+  title: 'Elementree'
+  descrption: 'Configure the Elementree settings.'
+  parent: system.admin_config
+  route_name: elementree.settings

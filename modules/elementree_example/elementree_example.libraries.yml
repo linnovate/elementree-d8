@@ -1,0 +1,7 @@
+components:
+  version: 1.x
+  header: true
+  js:
+    js/my_components.js: {}
+  dependencies:
+    - elementree/base

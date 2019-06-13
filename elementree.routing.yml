@@ -1,0 +1,8 @@
+elementree.settings:
+  path: '/admin/config/elementree/settings'
+  defaults:
+    _form: 'Drupal\elementree\Form\ElementreeSettingsForm'
+    _title: 'Elementree Settings'
+  requirements:
+    _permission: 'elementree configuration'
+

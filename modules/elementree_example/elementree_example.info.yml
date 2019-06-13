@@ -1,0 +1,8 @@
+name: 'Elementree example'
+description: 'Example block and page of Elementree.'
+package: Block
+
+type: module
+core: 8.x
+dependencies:
+  - elementree:elementree
