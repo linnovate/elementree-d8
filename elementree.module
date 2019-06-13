@@ -111,7 +111,7 @@ function elementree_item($component_name, $configs= []){
         'elementree/components',
       ],
     ],
-    ['#cache' => ['max-age' => 0]]
+    //['#cache' => ['max-age' => 0]]
   ];
 }
 
