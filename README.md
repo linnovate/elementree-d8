@@ -11,7 +11,7 @@ go to: **admin/config/elementree/settings**  and enter your path of **path/[clie
 
 ```php
 $item = elementree_item( $component_name, $configs);
-```
+
 // $item
 // [
 //	'#markup' => elementree_markup($component_name, $configs),
@@ -23,6 +23,7 @@ $item = elementree_item( $component_name, $configs);
 //		],
 //	],
 //];
+```
 
 ### Client side - [client-components].js
 Add the list of components in the "CRWidgets" object.
