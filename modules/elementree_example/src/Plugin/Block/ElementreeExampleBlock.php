@@ -55,7 +55,7 @@ class ElementreeExampleBlock extends BlockBase implements BlockPluginInterface {
   public function build() {
     $config = $this->getConfiguration();
     $item = elementree_item('MyComponentName', $config);
-    // $item['#attached']['library'][] = 'elementree_example/components';
+    $item['#attached']['library'][] = 'elementree_example/components';
     return $item;
   }
 }

@@ -15,6 +15,17 @@ function  elementree_library_info_build() {
     ],
   ];
 
+  $libraries['form'] = [
+    'js' => [
+      'js/elementree-form.js' => [],
+    ],
+    'dependencies' => [
+      'core/jquery',
+      'core/drupal.autocomplete',
+    ],
+  ];
+
+
   $libraries['components'] = [
     'header' => true,
     'js' => [
@@ -42,7 +53,7 @@ function elementree_form_alter(&$form, $form_state, $form_id) {
    
     $getSectionStorage = $form_state->getBuildInfo()['callback_object']->getCurrentComponent();
     $block = unserialize($getSectionStorage->toArray()['configuration']['block_serialized']); 
-    $uuid = $block->uuid();
+    $uuid = ($block) ? $block->uuid(): $getSectionStorage->getUuid();
 
     $list = \Drupal::config('elementree.settings')->get('list');
 
@@ -59,6 +70,10 @@ function elementree_form_alter(&$form, $form_state, $form_id) {
       '#default_value' => $list[$uuid]['component_name'],
       '#weight' => 0,
     );
+
+    // $form['#attached']['library'][] = 'core/jquery';
+    // $form['#attached']['library'][] = 'core/drupal.autocomplete';
+    // $form['#attached']['library'][] = 'elementree/form';
 
     $form_value = $form_state->getUserInput();
 
@@ -88,7 +103,7 @@ function elementree_preprocess_block(&$variables) {
   if ($uuid && isset($list[$uuid]) && $list[$uuid]['enable']) {
     $component_name = $list[$uuid]['component_name'];
     $configs = $variables['configuration'];
-    $variables['content'] += elementree_item( $component_name, $configs);
+    $variables['content'] += elementree_item($component_name, $configs);
     
     unset($variables['content']['#theme']);
     unset($variables['theme_hook_original']);
@@ -109,6 +124,9 @@ function elementree_item($component_name, $configs= []){
       'library' => [
         'elementree/base',
         'elementree/components',
+        'core/jquery',
+        'core/drupal.autocomplete',
+        'elementree/form',
       ],
     ],
     //['#cache' => ['max-age' => 0]]

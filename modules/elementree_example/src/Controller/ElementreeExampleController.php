@@ -25,7 +25,7 @@ class ElementreeExampleController extends ControllerBase {
     public function myPage() {
         $config = [];
         $item = elementree_item('MyPageComponentName', $config);
-        // $item['#attached']['library'][] = 'elementree_example/components';
+        $item['#attached']['library'][] = 'elementree_example/components';
         return $item;
     }
 }
