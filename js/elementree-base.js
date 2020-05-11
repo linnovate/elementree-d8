@@ -11,7 +11,7 @@ function CRRender(el, name, settings) {
 			CRWidgets[name](el, settings);
 		} else {
 			// show the problem
-			el.innerHTML = "Empty client component. <br/>(see: \
+			el.innerHTML = "Block <strong>" + name + "</strong> is empty client component. <br/>(see: \
 					<a targt='_blank' href='https://gitlab.linnovate.net/aron/client_render'>https://gitlab.linnovate.net/aron/client_render</a>, \
 					OR use \
 					<a targt='_blank' href='https://gitlab.linnovate.net/aron/CR_react_components_tmp'>https://gitlab.linnovate.net/aron/CR_react_components_tmp</a>\

@@ -41,11 +41,26 @@ class ElementreeSettingsForm extends ConfigFormBase {
     $form['#tree'] = TRUE;
 
     $form['settings']['components_js_path'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Components js path',
+      '#type' => 'textarea',
+      '#title' => t('Components js path'),
+      '#description' => t(''),
       '#default_value' => $config['components_js_path'],
     );
-   
+
+    $form['settings']['components_css_path'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Components css path'),
+      '#description' => t(''),
+      '#default_value' => $config['components_css_path'],
+    );
+
+    $form['settings']['reset_ssr'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Delete server side rendering in browser'),
+      '#description' => t(''),
+      '#default_value' => $config['reset_ssr'],
+    );
+
     return parent::buildForm($form, $form_state);
   }
 

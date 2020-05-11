@@ -7,6 +7,20 @@
 function  elementree_library_info_build() {
   $libraries = [];
   $config = \Drupal::config('elementree.settings')->get('config');
+  
+  $components_js  = explode(PHP_EOL ,$config['components_js_path']);
+  $components_css = explode(PHP_EOL ,$config['components_css_path']);
+
+  foreach($components_js as $path) {
+    if ($path) {
+      $components_js_array[$path] = [ 'weight' => -1 ];
+    }
+  }
+  foreach($components_css as $path) {
+    if ($path) {
+      $components_css_array[$path] = [ 'weight' => -1 ];
+    }
+  } 
 
   $libraries['base'] = [
     'header' => true,
@@ -25,18 +39,37 @@ function  elementree_library_info_build() {
     ],
   ];
 
-
   $libraries['components'] = [
     'header' => true,
-    'js' => [
-      $config['components_js_path'] => [ 'weight' => -1 ],
+    'js' => $components_js_array,
+    'css' => [
+      'base' => $components_css_array,
     ],
     'dependencies' => [
-      'elementree-base',
+      'elementree/base',
     ],
   ];
 
   return $libraries;
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function elementree_page_attachments(&$attachments) {
+  $config = \Drupal::config('elementree.settings')->get('config');
+  
+  if ($config['reset_ssr'] == TRUE) {
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => 'document.querySelectorAll(\'[id*="cr-"]\').forEach(function(el) { el.innerHTML = "" });',
+      ],
+      'reset_ssr',
+    ];
+  }
 }
 
 
